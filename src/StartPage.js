@@ -1,11 +1,18 @@
 import React, { useRef } from 'react';
 import AboutMe from './AboutMe';
+import Projects from './Projects';
 
 const StartPage = () => {
     const aboutMeRef = useRef(null);
 
-    const handleClick = () => {
+    const handleClickAbout = () => {
         aboutMeRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const projectsRef = useRef(null);
+
+    const handleClickProjects = () => {
+        projectsRef.current.scrollIntoView({behavior: 'smooth'});
     };
 
     return (
@@ -24,21 +31,22 @@ const StartPage = () => {
                     </p>
                     <div className="flex justify-center">
                         <button
-                            onClick={handleClick}
+                            onClick={handleClickAbout}
                             className="bg-white text-gray-900 hover:bg-gray-100 rounded-full px-6 py-3 text-lg font-semibold mr-4"
                         >
                             About Me
                         </button>
-                        <a
-                            href="#projects"
+                        <button
+                            onClick={handleClickProjects}
                             className="bg-gray-800 text-white hover:bg-gray-700 rounded-full px-6 py-3 text-lg font-semibold"
                         >
                             My Projects
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
             <AboutMe ref={aboutMeRef} />
+            <Projects ref={projectsRef}/>
         </div>
     );
 }
